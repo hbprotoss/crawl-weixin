@@ -22,7 +22,7 @@ class SogouSpider(scrapy.Spider):
     # ]
 
     def start_requests(self):
-        for i in range(1, 2):
+        for i in range(1, int(self.settings["PAGES"]) + 1):
             yield self.make_requests_from_url(
                 "http://weixin.sogou.com/weixin?query=%s&type=2&page=%d&ie=utf8" % (
                     urllib.quote(self.settings["KEYWORD"]), i

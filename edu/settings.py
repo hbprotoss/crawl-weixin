@@ -87,3 +87,4 @@ MONGO_URI = "mongodb://192.168.1.230:27017"
 MONGO_DB = 'crawl'
 
 KEYWORD = "教育"
+PAGES = 10
