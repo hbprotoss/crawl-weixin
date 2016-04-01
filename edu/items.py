@@ -14,3 +14,4 @@ class EduItem(scrapy.Item):
     title = scrapy.Field()
     desc = scrapy.Field()
     link = scrapy.Field()
+    keyword = scrapy.Field()

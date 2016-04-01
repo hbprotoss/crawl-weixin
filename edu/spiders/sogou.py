@@ -30,6 +30,7 @@ class SogouSpider(scrapy.Spider):
             )
 
     def parse(self, response):
+        keyword = self.settings["KEYWORD"]
         search_results = response.xpath('//div[@class="wx-rb wx-rb3"]')
         self.snuid = self.get_snuid(response.headers.getlist('Set-Cookie'))
 
@@ -38,6 +39,7 @@ class SogouSpider(scrapy.Spider):
             item['title'] = to_text(result.xpath('div/h4/a//text()').extract())
             item['link'] = self.get_location("http://weixin.sogou.com" + to_text(result.xpath('div/h4/a/@href').extract()))
             item['desc'] = to_text(result.xpath('div/p//text()').extract())
+            item['keyword'] = keyword
             yield item
 
     def get_snuid(self, cookies):
